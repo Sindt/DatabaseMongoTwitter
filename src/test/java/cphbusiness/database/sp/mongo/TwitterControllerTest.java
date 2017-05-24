@@ -44,7 +44,6 @@ public class TwitterControllerTest {
 
 	@Test
 	public void testGetCountAllUsers() {
-		when(service.getAllUsers()).thenReturn(userlistMock);
 		when(userlistMock.hasNext()).thenReturn(true).thenReturn(false);
 		when(userlistMock.next()).thenReturn("TestUser");
 
@@ -52,19 +51,6 @@ public class TwitterControllerTest {
 		int result = (int) response.getEntity();
 
 		assertThat(result, is(1));
-	}
-
-	@Test
-	@Ignore 
-	public void testGetUsersWithMostLinks() {
-		when(service.getAllUsers()).thenReturn(userlistMock);
-
-		Response response = controller.getUsersWithMostLinks().build();
-
-		List<String> result = (List<String>) response.getEntity();
-
-		assertThat(result.isEmpty(), is(false));
-
 	}
 
 }

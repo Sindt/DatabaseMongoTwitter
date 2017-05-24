@@ -20,25 +20,12 @@ public class TwitterResource {
 	@Context
 	UriInfo uriInfo;
 
-	@Inject
-	private TwitterController controller;
-	
+	private TwitterController controller = new TwitterController();
+
 	@GET
 	@Path("count")
 	public Response getCountAllUsers() {
 		return controller.getCountAllUsers().build();
-	}
-
-	@GET
-	@Path("links")
-	public Response getLinksUsers() {
-		return controller.getUsersWithMostLinks().build();
-	}
-
-	@GET
-	@Path("mentioned")
-	public Response getMentionedUsers() {
-		return controller.getMentionedUsers().build();
 	}
 
 	@GET
